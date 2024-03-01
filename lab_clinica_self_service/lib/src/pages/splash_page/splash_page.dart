@@ -9,10 +9,20 @@ class SplashPage extends StatefulWidget {
 
 class _SplashPageState extends State<SplashPage> {
   @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+       Navigator.of(context).pushReplacementNamed('/auth/login');
+      //Navigator.of(context).pushReplacementNamed('/home');
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
- 
-      body: Center(child: Image.asset('assets/images/logo_vertical.png'),),
+      body: Center(
+        child: Image.asset('assets/images/logo_vertical.png'),
+      ),
     );
   }
 }
