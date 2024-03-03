@@ -1,7 +1,6 @@
 import 'package:brasil_fields/brasil_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:lab_clinica_core/lab_clinica_core.dart';
 import 'package:lab_clinica_self_service/src/core/un_focus_extension.dart';

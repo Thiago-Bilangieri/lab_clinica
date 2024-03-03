@@ -21,5 +21,5 @@ class DocumentsScanConfirmRoute extends FlutterGetItModulePageRouter {
       ];
 
   @override
-  WidgetBuilder get view => (_) => DocumentsScanConfirmPage();
+  WidgetBuilder get view => (_) => const DocumentsScanConfirmPage();
 }

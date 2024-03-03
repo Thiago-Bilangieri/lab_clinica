@@ -6,20 +6,21 @@ import 'package:lab_clinica_core/src/loader/lab_clinica_loader.dart';
 import 'package:lab_clinica_core/src/theme/lab_clinica_theme.dart';
 
 class LabClinicasCoreConfig extends StatelessWidget {
-  const LabClinicasCoreConfig({
-    super.key,
-    this.bindings,
-    this.pages,
-    this.pagesBuilders,
-    this.modules,
-    required this.title,
-  });
+  const LabClinicasCoreConfig(
+      {super.key,
+      this.bindings,
+      this.pages,
+      this.pagesBuilders,
+      this.modules,
+      required this.title,
+      this.didStart});
 
   final ApplicationBindings? bindings;
   final List<FlutterGetItPageRouter>? pages;
   final List<FlutterGetItPageBuilder>? pagesBuilders;
   final List<FlutterGetItModule>? modules;
   final String title;
+  final VoidCallback? didStart;
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +32,22 @@ class LabClinicasCoreConfig extends StatelessWidget {
       builder: (context, routes, flutterGetItNavObserver) {
         return AsyncStateBuilder(
           loader: LabClinicaLoader(),
-          builder: (navigatorObserver) => MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: LabClinicaTheme.lightTheme,
-            darkTheme: LabClinicaTheme.darkTheme,
-            routes: routes,
-            title: title,
-            navigatorObservers: [
-              flutterGetItNavObserver,
-              navigatorObserver,
-            ],
-          ),
+          builder: (navigatorObserver) {
+            if (didStart != null) {
+              didStart!();
+            }
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              theme: LabClinicaTheme.lightTheme,
+              darkTheme: LabClinicaTheme.darkTheme,
+              routes: routes,
+              title: title,
+              navigatorObservers: [
+                flutterGetItNavObserver,
+                navigatorObserver,
+              ],
+            ); 
+          },
         );
       },
     );

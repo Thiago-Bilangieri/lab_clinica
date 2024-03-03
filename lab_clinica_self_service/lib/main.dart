@@ -34,6 +34,7 @@ class LabClinicaSelfServiceApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LabClinicasCoreConfig(
+      
       title: "Lab Clinicas Auto-Atendimento",
       bindings: LabClinicasApplicationBindings(),
       pagesBuilders: [

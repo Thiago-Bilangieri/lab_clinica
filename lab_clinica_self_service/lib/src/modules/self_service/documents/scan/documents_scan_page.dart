@@ -3,7 +3,6 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:lab_clinica_core/lab_clinica_core.dart';
-import 'package:lab_clinica_self_service/src/modules/self_service/patient/patient_controller.dart';
 import 'package:lab_clinica_self_service/src/modules/self_service/widgets/lab_clinica_self_service_appbar.dart';
 import 'package:dotted_border/dotted_border.dart';
 

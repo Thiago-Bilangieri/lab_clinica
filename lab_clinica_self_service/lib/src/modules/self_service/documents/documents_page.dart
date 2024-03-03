@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:lab_clinica_core/lab_clinica_core.dart';
 import 'package:lab_clinica_self_service/src/model/self_service_model.dart';
 import 'package:lab_clinica_self_service/src/modules/self_service/documents/widgets/documents_box_widget.dart';
-import 'package:lab_clinica_self_service/src/modules/self_service/patient/patient_controller.dart';
 import 'package:lab_clinica_self_service/src/modules/self_service/self_service_controller.dart';
 import 'package:lab_clinica_self_service/src/modules/self_service/widgets/lab_clinica_self_service_appbar.dart';
 
@@ -146,8 +144,8 @@ class _DocumentsPageState extends State<DocumentsPage> with MessagesViewMixin {
                         ),
                         Expanded(
                             child: ElevatedButton(
-                          onPressed: () {
-                            Navigator.of(context).pushNamed('/self-service/done');
+                          onPressed: () async {
+                            await selfServiceController.finalize();
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: LabClinicaTheme.orangeColor,

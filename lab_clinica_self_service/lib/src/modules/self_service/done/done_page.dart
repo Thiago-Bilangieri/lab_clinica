@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 import 'package:lab_clinica_core/lab_clinica_core.dart';
+import 'package:lab_clinica_self_service/src/modules/self_service/self_service_controller.dart';
 
 class DonePage extends StatelessWidget {
-  const DonePage({super.key});
+  final selfServiceController = Injector.get<SelfServiceController>();
+  DonePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final sizeOf = MediaQuery.sizeOf(context);
+    final password = ModalRoute.of(context)?.settings.arguments ??
+        'Erro ao recuperar senha.';
+
     return Scaffold(
       body: Align(
         alignment: Alignment.center,
@@ -46,9 +52,9 @@ class DonePage extends StatelessWidget {
                       color: LabClinicaTheme.orangeColor,
                       borderRadius: BorderRadius.circular(16),
                     ),
-                    child: const Text(
+                    child: Text(
                       textAlign: TextAlign.center,
-                      "BG5898",
+                      selfServiceController.password,
                       style: TextStyle(
                           fontSize: 24,
                           color: Colors.white,
@@ -109,9 +115,10 @@ class DonePage extends StatelessWidget {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: LabClinicaTheme.orangeColor,
-                        
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        selfServiceController.restartProcess();
+                      },
                       child: const Text(
                         'FINALIZAR',
                         style: TextStyle(
